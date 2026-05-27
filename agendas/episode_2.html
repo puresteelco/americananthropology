@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 2 Agenda — American Anthropology</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Cpath d='M8 7 C8 7 9 6 16 6 C23 6 24 7 24 7 L24 24 C24 24 23 23 16 23 C9 23 8 24 8 24 Z' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cline x1='16' y1='6' x2='16' y2='23' stroke='white' stroke-width='1'/%3E%3Cline x1='7' y1='26' x2='25' y2='26' stroke='%23b83232' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #060a14;
+            --bg-card: #0c1120;
+            --accent: #2563eb;
+            --accent-glow: rgba(37, 99, 235, 0.15);
+            --accent-light: #6fa3ff;
+            --text-primary: #f0f2f5;
+            --text-secondary: #8892a4;
+            --text-muted: #4a5568;
+            --border: rgba(255,255,255,0.06);
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 40px var(--accent-glow);
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .eyebrow a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .eyebrow a:hover {
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            background: linear-gradient(180deg, #ffffff 40%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .segment {
+            padding: 16px 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .segment:hover {
+            transform: translateY(-2px);
+            border-color: rgba(37, 99, 235, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .segment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 4px;
+        }
+
+        .segment-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .segment-chapters {
+            font-size: 0.72rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: rgba(37, 99, 235, 0.15);
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 4px;
+            font-weight: bold;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .quote-block {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: 10px;
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid var(--accent);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .quote-text {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.78rem;
+            color: var(--accent-light);
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #3b7aed;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                background: white;
+                color: black;
+            }
+            .segment {
+                background: transparent;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+                margin-bottom: 8px;
+                padding: 10px;
+            }
+            .actions {
+                display: none;
+            }
+            .segment-chapters {
+                border: 1px solid #000;
+                background: transparent;
+                color: black;
+            }
+            li::before {
+                color: black;
+            }
+            h1 {
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: black;
+            }
+            .quote-block {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+                padding: 10px;
+                margin-top: 15px;
+            }
+            .quote-author {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="eyebrow"><a href="../index.html">&larr; Back to Home</a></div>
+            <h1>AMERICAN ANTHROPOLOGY</h1>
+            <div class="meta">
+                <div class="meta-item">
+                    <strong>Book:</strong> The Turning Point (Shmelev & Popov)
+                </div>
+                <div class="meta-item">
+                    <strong>Lens:</strong> Inside the Collapse: An Autopsy of Soviet Central Planning
+                </div>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Part 1 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part I: Historical Context</div>
+                    <div class="segment-chapters">Chapter 1</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Lenin's New Economic Policy (NEP) of the 1920s proved that mixed/market-based systems could rapidly revive a ruined economy, whereas the Stalinist command system crushed this progress.</li>
+                    <li><strong>Shmelev/Popov Example:</strong> 1920s Recovery vs. 1929 Collectivization (the rapid economic rejuvenation under the NEP's mixed market compared to the massive human and capital losses of Stalinist forced collectivization).</li>
+                    <li><strong>Prompt:</strong> Discuss how the Soviet Union's own history demonstrated the necessity of market mechanisms (the NEP) and how the transition to Stalinist central planning set the stage for long-term decline.</li>
+                </ul>
+            </div>
+
+            <!-- Part 2 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part II: The Mirage of Soviet Statistics</div>
+                    <div class="segment-chapters">Chapter 2</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Official command statistics were systematic fabrications, hiding stagnation, inefficiency, and double-counting.</li>
+                    <li><strong>Shmelev/Popov Example:</strong> Statistical Falsification & The Lottery Ruble (doctored production data that masked real stagnation, and Shmelev's famous statement: "The ruble is no longer a currency, it is a lottery ticket").</li>
+                    <li><strong>Prompt:</strong> How do central planners use distorted data to construct a false reality, and why is objective price discovery impossible without free markets?</li>
+                </ul>
+            </div>
+
+            <!-- Part 3 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part III: The Administered System & Bureaucratic Paralysis</div>
+                    <div class="segment-chapters">Chapter 3</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> The command system forces Gosplan and Gossnab bureaucrats to manage millions of prices and balances, a task that is computationally and practically impossible.</li>
+                    <li><strong>Shmelev/Popov Example:</strong> Gosplan's Impossible Calculus (the authors analyze Gosplan's attempt to coordinate millions of individual prices and material balances, noting that objectively determined valuations are impossible in practice due to the colossal volume of information).</li>
+                    <li><strong>Prompt:</strong> How does attempting to run a nation’s economy like "one single factory" inevitably lead to administrative paralysis and systemic failure?</li>
+                </ul>
+            </div>
+
+            <!-- Part 4 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part IV: The Shortage Economy & Directive Planning</div>
+                    <div class="segment-chapters">Chapter 4</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Shortages are not accidental bugs but structural features of price controls and directive targets.</li>
+                    <li><strong>Shmelev/Popov Example:</strong> The Cheshire Cat Analogy (comparing the relationship between supply and demand to the Cheshire Cat: the ties are "not totally severed, but in our economy these ties acquire an ethereal character, not unlike the connection between the Cheshire Cat and his body").</li>
+                    <li><strong>Prompt:</strong> Why do state-mandated prices and directive production targets guarantee chronic deficits, and how does this distort human behavior (queues, hoarding, black markets)?</li>
+                </ul>
+            </div>
+
+            <!-- Part 5 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part V: Black Holes of Resource Wastage</div>
+                    <div class="segment-chapters">Chapter 5</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Command economies overproduce heavy inputs (steel, cement, tractors) while creating massive waste and shortages of final consumer goods.</li>
+                    <li><strong>Shmelev/Popov Example:</strong> Tractor Overproduction & Rotting Grain (the USSR produced more steel, cement, and tractors than the US, yet suffered from chronic shortages because grain rotted in fields due to poor transport and enterprises broke machinery to meet repair quotas).</li>
+                    <li><strong>Prompt:</strong> Explain the concept of "black holes" in central planning—why does producing more resources (steel, cement) lead to fewer consumer goods and systemic capital destruction?</li>
+                </ul>
+            </div>
+
+            <!-- Part 6 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part VI: Prices, Incentives, and Market Self-Regulation</div>
+                    <div class="segment-chapters">Chapter 6</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Real market prices and profit-and-loss incentives are the only way to coordinate modern economic activity and motivate worker efficiency.</li>
+                    <li><strong>Shmelev/Popov Example:</strong> The 1982 Moleskin Pelt Surplus (raising the state buy price of moleskin pelts from 20 to 50 kopecks to stimulate output led to a massive surplus that rotted in warehouses because the price didn't reflect consumer demand).</li>
+                    <li><strong>Prompt:</strong> Contrast the self-adjusting market price system with administrative price setting. Why must prices reflect real scarcity rather than state decrees to restore worker and enterprise incentives?</li>
+                </ul>
+            </div>
+
+            <!-- Part 7 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part VII: Global Trade & The Convertibility Barrier</div>
+                    <div class="segment-chapters">Chapter 7</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Economic isolation (autarky) is a dead end. Integrating into global trade requires a convertible currency and competitive goods.</li>
+                    <li><strong>Shmelev/Popov Example:</strong> The Unconvertible Ruble (the USSR could only export raw oil and gas because its manufactured goods were uncompetitive globally, and the ruble's artificial exchange rate isolated it from global market signals).</li>
+                    <li><strong>Prompt:</strong> How does isolation from the international division of labor and the lack of currency convertibility stunt an economy’s technological and industrial development?</li>
+                </ul>
+            </div>
+
+            <!-- Part VIII: The Turning Point & Obstacles to Reform -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part VIII: The Turning Point & Obstacles to Reform</div>
+                    <div class="segment-chapters">Chapter 8</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Transitioning from command to market requires radical structural and cultural shifts, which face intense resistance from bureaucrats and ideological path-dependency.</li>
+                    <li><strong>Shmelev/Popov Example:</strong> The Entrenched Nomenklatura (the authors warn that the USSR faces a stark choice: move to market-based reforms or "turn into a backward, stagnant state that will be an example to the entire world of how not to organize economic life").</li>
+                    <li><strong>Prompt:</strong> Analyze the political and social obstacles to dismantling a command economy. Why is the transition to free enterprise so difficult once a state bureaucracy has entrenched itself?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-text">"If we do not reform, we will turn into a backward, stagnant state that will be an example to the entire world of how not to organize economic life."</div>
+            <div class="quote-author">— NIKOLAI SHMELEV & VLADIMIR POPOV</div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" onclick="window.print()">Print Agenda</button>
+            <button class="btn btn-outline" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!')">Copy Link</button>
+        </div>
+    </div>
+
+</body>
+</html>

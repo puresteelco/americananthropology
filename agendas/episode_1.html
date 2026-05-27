@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 1 Agenda — American Anthropology</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Cpath d='M8 7 C8 7 9 6 16 6 C23 6 24 7 24 7 L24 24 C24 24 23 23 16 23 C9 23 8 24 8 24 Z' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cline x1='16' y1='6' x2='16' y2='23' stroke='white' stroke-width='1'/%3E%3Cline x1='7' y1='26' x2='25' y2='26' stroke='%23b83232' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #060a14;
+            --bg-card: #0c1120;
+            --accent: #2563eb;
+            --accent-glow: rgba(37, 99, 235, 0.15);
+            --accent-light: #6fa3ff;
+            --text-primary: #f0f2f5;
+            --text-secondary: #8892a4;
+            --text-muted: #4a5568;
+            --border: rgba(255,255,255,0.06);
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 40px var(--accent-glow);
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            background: linear-gradient(180deg, #ffffff 40%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .segment {
+            padding: 16px 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .segment:hover {
+            transform: translateY(-2px);
+            border-color: rgba(37, 99, 235, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .segment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 4px;
+        }
+
+        .segment-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .segment-chapters {
+            font-size: 0.72rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: rgba(37, 99, 235, 0.15);
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 4px;
+            font-weight: bold;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .quote-block {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: 10px;
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid var(--accent);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .quote-text {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.78rem;
+            color: var(--accent-light);
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #3b7aed;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                background: white;
+                color: black;
+            }
+            .segment {
+                background: transparent;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+                margin-bottom: 8px;
+                padding: 10px;
+            }
+            .actions {
+                display: none;
+            }
+            .segment-chapters {
+                border: 1px solid #000;
+                background: transparent;
+                color: black;
+            }
+            li::before {
+                color: black;
+            }
+            h1 {
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: black;
+            }
+            .quote-block {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+                padding: 10px;
+                margin-top: 15px;
+            }
+            .quote-author {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="eyebrow"><a href="../index.html" style="color: inherit; text-decoration: none; transition: opacity 0.2s;">&larr; Back to Home</a></div>
+            <h1>AMERICAN ANTHROPOLOGY</h1>
+            <div class="meta">
+                <div class="meta-item">
+                    <strong>Book:</strong> Basic Economics (Thomas Sowell)
+                </div>
+                <div class="meta-item">
+                    <strong>Lens:</strong> Free Markets vs. The Inherent Inefficiencies of Socialism
+                </div>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Part 1 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part I: Prices & Markets</div>
+                    <div class="segment-chapters">Chapters 1–6</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Scarcity forces economic tradeoffs. Prices act as vital information signals allocating alternative uses.</li>
+                    <li><strong>Sowell Example:</strong> Soviet Crate Shortage / Rotting Grain (planners letting bumper crops rot in fields by failing to price or coordinate shipping crates) and San Francisco Rent Control (price ceilings destroying building maintenance).</li>
+                    <li><strong>Prompt:</strong> Contrast voluntary market pricing with the structural shortages inevitably created by socialist central planning and price fixing.</li>
+                </ul>
+            </div>
+
+            <!-- Part 2 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part II: Industry & Commerce</div>
+                    <div class="segment-chapters">Chapters 7–10</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> The critical role of profit and loss. Losses are essential to weed out inefficient resource users.</li>
+                    <li><strong>Sowell Example:</strong> The Fall of A&P Grocery (private giants face bankruptcy if they fail to adapt) vs. Government Immunity to Losses (public enterprises do not feel losses and are instead subsidized or rewarded with larger taxpayer-funded budgets upon failing).</li>
+                    <li><strong>Prompt:</strong> How does socialist state ownership insulate managers from losses, leading to the permanent waste of societal capital that a free market would immediately weed out?</li>
+                </ul>
+            </div>
+
+            <!-- Part 3 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part III: Work & Pay</div>
+                    <div class="segment-chapters">Chapters 11–14</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Real wages are tied to individual productivity rather than legislation, employers, or unions.</li>
+                    <li><strong>Sowell Example:</strong> Tractor Operator vs. Hoe Wielder (an American tractor operator earns vastly more than an African manual hoe farmer because he produces exponentially more food per hour, not employer mercy).</li>
+                    <li><strong>Prompt:</strong> How does productivity debunk the socialist "labor theory of value," and why did state-directed wage fixing under socialism systematically destroy workers' incentives?</li>
+                </ul>
+            </div>
+
+            <!-- Part 4 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part IV: Time & Risk</div>
+                    <div class="segment-chapters">Chapters 15–18</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> The necessity of time in capital investments. Speculation and insurance mitigate inevitable future risk.</li>
+                    <li><strong>Sowell Example:</strong> Commodity Wheat Speculation (speculators buy crops before harvest, taking risk away from the farmer and stabilizing price swings year-round).</li>
+                    <li><strong>Prompt:</strong> Contrast how free capital markets and speculators naturally absorb risk over time, with how socialist planners systematically failed to forecast and manage future agricultural or industrial risk.</li>
+                </ul>
+            </div>
+
+            <!-- Part 5 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part V: The National Economy</div>
+                    <div class="segment-chapters">Chapters 19–21</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Gross Domestic Product (GDP), national wealth, banking systems, and structural inflation.</li>
+                    <li><strong>Sowell Example:</strong> Weimar Germany Hyperinflation 1923 (money is just a token; true wealth is physical output. Printing money led to citizens carrying cash in wheelbarrows).</li>
+                    <li><strong>Prompt:</strong> Why do socialist and statist regimes historically resort to hyper-printing money to fund welfare deficits, and how does this inevitably destroy a nation's currency?</li>
+                </ul>
+            </div>
+
+            <!-- Part 6 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part VI: The International Economy</div>
+                    <div class="segment-chapters">Chapters 22–24</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> International trade is non-zero-sum. Comparative advantage benefits all trading nations.</li>
+                    <li><strong>Sowell Example:</strong> American Sugar Tariffs (tariffs keep sugar prices high, causing candy maker Life Savers to move its factories to Canada, destroying more jobs than it saved).</li>
+                    <li><strong>Prompt:</strong> How does Sowell's critique of protectionism expose the ultimate economic failures of socialist autarky (national economic self-sufficiency)?</li>
+                </ul>
+            </div>
+
+            <!-- Part 7 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part VII: Special Economic Issues</div>
+                    <div class="segment-chapters">Chapters 25–27</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Market outcomes vs. non-market decisions; NGO/non-profit incentives, popular myths, and economic history.</li>
+                    <li><strong>Sowell Example:</strong> Public Housing Decay (short-term political accountability) and NGO Incentives (how non-profits lack profit/loss discipline, creating incentives to perpetuate problems rather than solve them to protect funding/jobs).</li>
+                    <li><strong>Prompt:</strong> Contrast market accountability (where failure leads to bankruptcy) with the political survival incentives of socialist planners and state bureaucrats (who suffer no financial penalty for colossal failures).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-text">"The first rule of economics is scarcity; the first rule of politics is to ignore the first rule of economics."</div>
+            <div class="quote-author">— THOMAS SOWELL</div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" onclick="window.print()">Print Agenda</button>
+            <button class="btn btn-outline" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!')">Copy Link</button>
+        </div>
+    </div>
+
+</body>
+</html>
