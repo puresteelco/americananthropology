@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 3 Cheat Sheet — American Anthropology</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f2937'/%3E%3Cpath d='M8 7 C8 7 9 6 16 6 C23 6 24 7 24 7 L24 24 C24 24 23 23 16 23 C9 23 8 24 8 24 Z' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cline x1='16' y1='6' x2='16' y2='23' stroke='white' stroke-width='1'/%3E%3Cline x1='7' y1='26' x2='25' y2='26' stroke='%23b83232' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --accent: #b83232;
+            --accent-hover: #9c2727;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --border: #e5e7eb;
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 520px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+
+        .subtitle {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .list {
+            margin-bottom: 24px;
+        }
+
+        .item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .title span:first-child {
+            color: var(--text-primary);
+        }
+
+        .title span:last-child {
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.15s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .btn-outline:hover {
+            background: #f9fafb;
+            color: var(--text-primary);
+        }
+
+        .footer-note {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            font-style: italic;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <header>
+            <div class="eyebrow">CO-HOST CHEAT SHEET</div>
+            <h1>AMERICAN ANTHROPOLOGY</h1>
+            <div class="subtitle">The Rise of the West (William H. McNeill) &mdash; Friction of Strangers: Cultural Diffusion and the Eurasian Ecumene</div>
+        </header>
+
+        <div class="list">
+            <div class="item">
+                <div class="title"><span>1. The Sumerian Breakthrough</span> <span>Ch. 1 & 2</span></div>
+                <div class="desc">The move from self-sufficient neolithic villages to complex city-states; how Mesopotamian silt and irrigation forced the creation of central temple bureaucracies.</div>
+            </div>
+            <div class="item">
+                <div class="title"><span>2. Egypt vs. Sumer Diffusion</span> <span>Ch. 3</span></div>
+                <div class="desc">Egypt's geographic isolation (autarky and stable pharaohs) vs. Sumer's open plain (fragmentation, dynamic trade, constant warfare).</div>
+            </div>
+            <div class="item">
+                <div class="title"><span>3. The Cosmopolitan Chariot System</span> <span>Ch. 4</span></div>
+                <div class="desc">Chariot invasions integrating the Middle East; the bronze-to-iron shift; phonetic alphabet coordinating logistical empires.</div>
+            </div>
+            <div class="item">
+                <div class="title"><span>4. Hellenic Freedom</span> <span>Ch. 5</span></div>
+                <div class="desc">The Greek city-state (*polis*); citizenship and rationalism emerging on the periphery, challenging Persia's bureaucratic empire.</div>
+            </div>
+            <div class="item">
+                <div class="title"><span>5. The Eurasian Ecumene</span> <span>Ch. 6</span></div>
+                <div class="desc">The closure of the Silk Road chain (Rome, Parthia, Kush, Han China); how globalization connected Eurasian history into a single, vulnerable system.</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" id="copy-btn">Copy Text for Co-Host</button>
+            <button class="btn btn-outline" onclick="window.location.href='../index.html'">Back to Home</button>
+        </div>
+
+        <div class="footer-note">
+            "Historical change is primarily a matter of the contact of peoples, and the subsequent diffusion of techniques, ideas, and institutions... The engine of history is the friction of strangers." — McNeill
+        </div>
+    </div>
+
+    <script>
+        const agendaText = `# 🎙️ American Anthropology — Ep. 3: McNeill's "The Rise of the West" (Part 1)
+**Co-Host Cheat Sheet** | **Lens:** Friction of Strangers: Cultural Diffusion and the Eurasian Ecumene
+
+Hey man! Here is the quick discussion guide for Episode 3. We are covering the first half of William H. McNeill's classic *The Rise of the West*, analyzing Chapters 1–6. We'll use these 5 parts as our conversation rails:
+
+1. **The Sumerian Breakthrough (Ch. 1 & 2)**: The move from self-sufficient neolithic villages to complex city-states; how Mesopotamian silt and irrigation forced the creation of central temple bureaucracies.
+2. **Egypt vs. Sumer Diffusion (Ch. 3)**: Egypt's geographic isolation (autarky and stable pharaohs) vs. Sumer's open plain (fragmentation, dynamic trade, constant warfare).
+3. **The Cosmopolitan Chariot System (Ch. 4)**: Chariot invasions integrating the Middle East; the bronze-to-iron shift; phonetic alphabet coordinating logistical empires.
+4. **Hellenic Freedom (Ch. 5)**: The Greek city-state (*polis*); citizenship and rationalism emerging on the periphery, challenging Persia's bureaucratic empire.
+5. **The Eurasian Ecumene (Ch. 6)**: The closure of the Silk Road chain (Rome, Parthia, Kush, Han China); how globalization connected Eurasian history into a single, vulnerable system.
+
+"Historical change is primarily a matter of the contact of peoples, and the subsequent diffusion of techniques, ideas, and institutions... The engine of history is the friction of strangers." — McNeill`;
+
+        document.getElementById('copy-btn').addEventListener('click', () => {
+            navigator.clipboard.writeText(agendaText).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.textContent = 'Copied to Clipboard! ✓';
+                btn.style.background = '#10b981';
+                setTimeout(() => {
+                    btn.textContent = 'Copy Text for Co-Host';
+                    btn.style.background = '#b83232';
+                }, 2000);
+            });
+        });
+    </script>
+
+</body>
+</html>

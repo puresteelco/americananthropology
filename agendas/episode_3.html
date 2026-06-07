@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 3 Agenda — American Anthropology</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f1923'/%3E%3Cpath d='M8 7 C8 7 9 6 16 6 C23 6 24 7 24 7 L24 24 C24 24 23 23 16 23 C9 23 8 24 8 24 Z' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cline x1='16' y1='6' x2='16' y2='23' stroke='white' stroke-width='1'/%3E%3Cline x1='7' y1='26' x2='25' y2='26' stroke='%23b83232' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #060a14;
+            --bg-card: #0c1120;
+            --accent: #2563eb;
+            --accent-glow: rgba(37, 99, 235, 0.15);
+            --accent-light: #6fa3ff;
+            --text-primary: #f0f2f5;
+            --text-secondary: #8892a4;
+            --text-muted: #4a5568;
+            --border: rgba(255,255,255,0.06);
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 40px var(--accent-glow);
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .eyebrow a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .eyebrow a:hover {
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            background: linear-gradient(180deg, #ffffff 40%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .segment {
+            padding: 16px 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .segment:hover {
+            transform: translateY(-2px);
+            border-color: rgba(37, 99, 235, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .segment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 4px;
+        }
+
+        .segment-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .segment-chapters {
+            font-size: 0.72rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: rgba(37, 99, 235, 0.15);
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent);
+            position: absolute;
+            left: 4px;
+            font-weight: bold;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .quote-block {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: 10px;
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid var(--accent);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .quote-text {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.78rem;
+            color: var(--accent-light);
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #3b7aed;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                background: white;
+                color: black;
+            }
+            .segment {
+                background: transparent;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+                margin-bottom: 8px;
+                padding: 10px;
+            }
+            .actions {
+                display: none;
+            }
+            .segment-chapters {
+                border: 1px solid #000;
+                background: transparent;
+                color: black;
+            }
+            li::before {
+                color: black;
+            }
+            h1 {
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: black;
+            }
+            .quote-block {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+                padding: 10px;
+                margin-top: 15px;
+            }
+            .quote-author {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="eyebrow"><a href="../index.html">&larr; Back to Home</a></div>
+            <h1>AMERICAN ANTHROPOLOGY</h1>
+            <div class="meta">
+                <div class="meta-item">
+                    <strong>Book:</strong> The Rise of the West (William H. McNeill)
+                </div>
+                <div class="meta-item">
+                    <strong>Lens:</strong> Silk Roads & Chariots: Cultural Diffusion and the Eurasian Ecumene
+                </div>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Part 1 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part I: The Sumerian Breakthrough & Irrigation State</div>
+                    <div class="segment-chapters">Chapters 1 & 2</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Civilization is born from environmental pressure and the social organization required to manage complex irrigation networks.</li>
+                    <li><strong>McNeill Example:</strong> Mesopotamian Silt & Temple Mobilization (Sumerian priests mobilizing collective labor for predictable irrigation, leading to writing, cuneiform, and administrative bureaucracy).</li>
+                    <li><strong>Prompt:</strong> Contrast the spontaneous development of self-sufficient agricultural villages with the rigid, centralized hierarchy required to build and maintain the irrigation systems that birthed the first city-states.</li>
+                </ul>
+            </div>
+
+            <!-- Part 2 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part II: The First Phase of Diffusion: Egypt vs. Sumer</div>
+                    <div class="segment-chapters">Chapter 3</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Outward diffusion of innovations to new environments creates distinct cultural and political archetypes based on geographic barriers.</li>
+                    <li><strong>McNeill Example:</strong> The Nile's Natural Barrier vs. Sumer's Open Plain (Egypt's geographic isolation allowing stable, peaceful autarky compared to Sumer's open plain, which led to constant militarization and vulnerability to raiders).</li>
+                    <li><strong>Prompt:</strong> How does geography dictate the political centralization of a society, and why did Egypt's protected landscape foster cultural conservatism compared to Sumer's dynamic but insecure open plain?</li>
+                </ul>
+            </div>
+
+            <!-- Part 3 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part III: Chariots, Iron, and the Cosmopolitan System</div>
+                    <div class="segment-chapters">Chapter 4</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Military innovations and metallurgy integrate distant regions into a highly interdependent trade and political network.</li>
+                    <li><strong>McNeill Example:</strong> The Chariot Revolution & The Phonetic Alphabet (nomadic chariot invasions breaking down Bronze Age kingdoms, forcing the creation of the iron-era Assyrian and Persian empires coordinated via the phonetic alphabet).</li>
+                    <li><strong>Prompt:</strong> How did the transition from expensive bronze (which concentrated power in royal hands) to cheap, abundant iron democratize warfare and lead to the rise of massive cosmopolitan empires?</li>
+                </ul>
+            </div>
+
+            <!-- Part 4 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part IV: Hellenic Rationalism and the Peripheral Challenge</div>
+                    <div class="segment-chapters">Chapter 5</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Free citizen communities situated on the peripheral margins of empire can develop unique, rationalist cultures that outmatch larger bureaucratic centers.</li>
+                    <li><strong>McNeill Example:</strong> The Polis vs. The Persian Bureaucracy (how the fragmented Greek geography prevented central empire-building, allowing citizen assemblies and public debate to flourish, culminating in their victory over Persian forces).</li>
+                    <li><strong>Prompt:</strong> Contrast the eastern model of political authority (sacral kingship and divine bureaucracy) with the Greek invention of citizen assemblies and rational inquiry.</li>
+                </ul>
+            </div>
+
+            <!-- Part 5 -->
+            <div class="segment">
+                <div class="segment-header">
+                    <div class="segment-title">Part V: The Silk Road and the Closure of the Eurasian Ecumene</div>
+                    <div class="segment-chapters">Chapter 6</div>
+                </div>
+                <ul>
+                    <li><strong>Core Theory:</strong> Large, stable border empires allow transcontinental trade networks to coalesce, linking global regions into a single, interactive community.</li>
+                    <li><strong>McNeill Example:</strong> The Four-Empire Peace & The Silk Trade (Rome, Parthia, Kush, and Han China stabilizing routes, meaning changes in East Asia, like nomad defeats, directly triggered migrations affecting Rome's borders).</li>
+                    <li><strong>Prompt:</strong> Analyze how the Silk Road integrated human history into a single interactive community. Why did this first era of Eurasian globalization make civilizations vulnerable to shared shocks like plagues and barbarian migrations?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quote-block">
+            <div class="quote-text">"Historical change is primarily a matter of the contact of peoples, and the subsequent diffusion of techniques, ideas, and institutions... The engine of history is the friction of strangers."</div>
+            <div class="quote-author">— WILLIAM H. MCNEILL</div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" onclick="window.print()">Print Agenda</button>
+            <button class="btn btn-outline" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!')">Copy Link</button>
+        </div>
+    </div>
+
+</body>
+</html>
